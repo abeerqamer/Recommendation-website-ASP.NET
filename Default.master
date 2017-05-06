@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Default.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>RECOM | your own recommendation system</title>
+    <link rel="icon" href="images/fav.png" type="image/x-icon" sizes="32*32" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet" />
+    <%--<link href="StyleSheet2.css" rel="stylesheet" />--%>
+    <link  href="StyleSheet5.css" rel="stylesheet" type="text/css"  runat="server" id="lnkStyleSheet"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="container">
+            <div id="header">
+
+                <div class="head1">
+                    <asp:LinkButton ID="LinkButton1" PostBackUrl="~/Default.aspx" runat="server">Recom</asp:LinkButton>
+                </div>
+
+
+                <div class="head2">
+                    <asp:LinkButton ID="post_question" CssClass="ui inverted green basic button small circular" runat="server" OnClick="post_question_Click" ><i class="write icon"></i>  post a question </asp:LinkButton>
+                    <div class="ui simple dropdown item">
+                        
+                            <asp:Label ID="user" CssClass="ui button inverted basic circular write icon" runat="server" Text="Welcome"></asp:Label>
+                        
+                        
+
+                        <div class="menu">
+                           
+                                <asp:LinkButton ID="LinkButton2" CssClass="item" PostBackUrl="~/MyPost.aspx" runat="server">    My Post    </asp:LinkButton>
+                           
+                                <asp:LinkButton ID="LinkButton3" CssClass="item" PostBackUrl="~/MyAnswer.aspx" runat="server">    My Answer    </asp:LinkButton>
+                            
+                                <asp:LinkButton ID="LinkButton4" CssClass="item" runat="server" OnClick="LinkButton4_Click">    Logout    </asp:LinkButton>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+       
+
+        <div id="content" class="noselect">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div id="footer">
+            <div class="align left foot">
+            <span>Site Visited :</span>
+             <asp:Label ID="labelvisit" runat="server" Text=""></asp:Label>
+        </div>
+            <div class="align center foot"> CopyRights @ HBA Team | All Rights Reserved</div>
+            <div class="foot">
+                <asp:DropDownList ID="ddlStyles" CssClass="ui dropdown up" ForeColor="Black" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlStyles_SelectedIndexChanged">
+<asp:ListItem Text="Turqoise" Value="StyleSheet5.css"></asp:ListItem>
+<asp:ListItem Text="MultiColor" Value="StyleSheet2.css"></asp:ListItem>
+</asp:DropDownList>
+            </div>
+           
+        </div>
+        </div>
+        
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿.cat{
+    font-size : small;
+    color:#bfbfbf;   
+    margin-right : 10px;
+}
+
+.Ques{
+    font-family : Montserrat;
+    font-size : x-large ; 
+}
+.Name{
+    font-family:Lato;
+    font-size:medium;
+}
+
+.Ans{
+    font-family:Lato;
+    font-size:small;
+}
+#hori{
+    
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    background-position: 0% 0%;
+height: -39px;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    background-color: #333;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+h3{
+    font-size : xx-large;
+    color : #bfbfbf;
+}
+
+.container{
+    margin-top : 50px;
+}
+
+.post{
+    margin-bottom : 40px;
+}

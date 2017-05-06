@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="recom" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=recom;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="recomConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Answer123" Member="Answer123s">
+    <Type Name="Answer123">
+      <Column Name="AId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Answer" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ATime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Log_Answer123" Member="Log" ThisKey="LId" OtherKey="LID" Type="Log" IsForeignKey="true" />
+      <Association Name="Question_Answer123" Member="Question" ThisKey="QId" OtherKey="QId" Type="Question" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Log]" Member="Logs">
+    <Type Name="Log">
+      <Column Name="LID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Log_Answer123" Member="Answer123s" ThisKey="LID" OtherKey="LId" Type="Answer123" />
+      <Association Name="Log_Question" Member="Questions" ThisKey="LID" OtherKey="LId" Type="Question" />
+      <Association Name="Log_UpVote" Member="UpVotes" ThisKey="LID" OtherKey="LId" Type="UpVote" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Question" Member="Questions">
+    <Type Name="Question">
+      <Column Name="QId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Questions" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Question_Answer123" Member="Answer123s" ThisKey="QId" OtherKey="QId" Type="Answer123" />
+      <Association Name="Question_UpVote" Member="UpVotes" ThisKey="QId" OtherKey="QId" Type="UpVote" />
+      <Association Name="Log_Question" Member="Log" ThisKey="LId" OtherKey="LID" Type="Log" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UpVote" Member="UpVotes">
+    <Type Name="UpVote">
+      <Column Name="VId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UpVote" Member="UpVote1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Log_UpVote" Member="Log" ThisKey="LId" OtherKey="LID" Type="Log" IsForeignKey="true" />
+      <Association Name="Question_UpVote" Member="Question" ThisKey="QId" OtherKey="QId" Type="Question" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
